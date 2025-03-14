@@ -1,0 +1,73 @@
+{
+  "name": "@psenger/express-auto-router",
+  "version": "0.0.1",
+  "description": "A dynamic route composition system for Express.js applications that automatically discovers and mount routes and middleware based on your file system structure. Inspired by Next.js routing conventions.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "build:watch": "rollup -c rollup.config.mjs -w",
+    "build:readme": "node scripts/build-readme.js",
+    "build:github-docs": "node scripts/build-github-doc-readme.js && jsdoc src/*.js -d ./docs/ -R ./docs/README.md",
+    "pretest": "npm run build",
+    "test": "jest",
+    "test:coverage": "npm test -- --coverage",
+    "test:lint": "eslint ./src",
+    "test:lint:fix": "eslint ./src --fix",
+    "clean": "npm run clean:dist && npm run clean:coverage && npm run clean:docs",
+    "clean:dist": "rimraf dist",
+    "clean:coverage": "rimraf coverage",
+    "clean:docs": "rimraf docs/*",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "format": "prettier --write \"src/*.js\"",
+    "prepublishOnly": "npm run clean && npm run build",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psenger/express-auto-router.git"
+  },
+  "keywords": [
+    "middleware",
+    "routing",
+    "autorouting",
+    "expressjs",
+    "filebasedrouting",
+    "discovery",
+    "nodejs",
+    "restframework"
+  ],
+  "author": {
+    "name": "Philip A Senger",
+    "email": "philip.a.senger@cngrgroup.com",
+    "url": "https://github.com/psenger"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
+  "bugs": {
+    "url": "https://github.com/psenger/express-auto-router/issues"
+  },
+  "homepage": "https://github.com/psenger/express-auto-router#readme",
+  "devDependencies": {
+    "@psenger/markdown-fences": "^1.2.0",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-jest": "^28.11.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "express": "^4.21.2",
+    "jest": "^29.7.0",
+    "jest-html-reporters": "^3.1.7",
+    "jsdoc": "^4.0.4",
+    "license-checker": "^25.0.1",
+    "markdown-toc": "^1.2.0",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.35.0",
+    "standard-version": "^9.5.0",
+    "supertest": "^7.0.0"
+  }
+}
