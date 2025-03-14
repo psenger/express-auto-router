@@ -15,7 +15,9 @@
 .next
 .node_repl_history
 .npm
+.nvmrc
 .nyc_output
+.prettierrc
 .yarn-integrity
 CONTRIBUTING.md
 DEPLOYMENT_STEPS.md
