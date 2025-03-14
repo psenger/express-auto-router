@@ -7,8 +7,10 @@
 *.seed
 *.tgz
 *.tsbuildinfo
+.DS_Store
 .cache
 .cache/
+.cursor
 .docusaurus
 .dynamodb/
 .env
@@ -60,4 +62,3 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 web_modules/
 yarn-debug.log*
 yarn-error.log*
-.DS_Store

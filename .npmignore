@@ -4,6 +4,7 @@
 *.seed
 *.tgz
 .README.md
+.cursor
 .editorconfig
 .env
 .eslintcache
