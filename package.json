@@ -1,6 +1,6 @@
 {
   "name": "@psenger/express-auto-router",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A dynamic route composition system for Express.js applications that automatically discovers and mount routes and middleware based on your file system structure. Inspired by Next.js routing conventions.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

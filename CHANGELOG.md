@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/psenger/express-auto-router/compare/v0.0.3...v0.1.0) (2025-03-17)
+
+
+### Features
+
+* pass parameters to the controllers and middleware ([81994e1](https://github.com/psenger/express-auto-router/commit/81994e112152edd9687429db115373b014ff651e))
+
 ### [0.0.3](https://github.com/psenger/express-auto-router/compare/v0.0.2...v0.0.3) (2025-03-14)
 
 
