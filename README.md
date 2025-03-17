@@ -1,7 +1,7 @@
 # [express-auto-router](https://github.com/psenger/express-auto-router#readme)
 
 > [!TAG]
-> 0.0.1
+> 0.0.3
 
 A dynamic route composition system for Express.js applications that automatically discovers and mount routes and middleware based on your file system structure. Inspired by Next.js routing conventions.
 
@@ -32,7 +32,7 @@ A dynamic route composition system for Express.js applications that automaticall
   * [validatePath(path)](#validatepathpath)
   * [dictionaryKeyStartsWithPath(dictionary, path) ⇒ Array.&lt;function()&gt;](#dictionarykeystartswithpathdictionary-path-%E2%87%92-arrayltfunctiongt)
   * [curryObjectMethods(router, urlPath, ...initialMiddleWareFunctions) ⇒ Object](#curryobjectmethodsrouter-urlpath-initialmiddlewarefunctions-%E2%87%92-object)
-  * [buildMiddlewareDictionary(basePath, baseURL) ⇒ Object.&lt;string, Array.&lt;function()&gt;&gt;](#buildmiddlewaredictionarybasepath-baseurl-%E2%87%92-objectltstring-arrayltfunctiongtgt)
+  * [buildMiddlewareDictionary(basePath, baseURL, [options]) ⇒ Object.&lt;string, Array.&lt;function()&gt;&gt;](#buildmiddlewaredictionarybasepath-baseurl-options-%E2%87%92-objectltstring-arrayltfunctiongtgt)
   * [buildRoutes(basePath, baseURL) ⇒ Array.&lt;Array.&lt;string&gt;&gt;](#buildroutesbasepath-baseurl-%E2%87%92-arrayltarrayltstringgtgt)
   * [composeRoutes(express, routeMappings, [options]) ⇒ Object](#composeroutesexpress-routemappings-options-%E2%87%92-object)
 - [Usage](#usage)
@@ -96,10 +96,10 @@ routes/
   ├── _middleware.js         # Global middleware
   ├── users/
   │   ├── _middleware.js     # Users-specific middleware
-  │   ├── index.js          # /users/ endpoint
-  │   └── [id]/            # Dynamic parameter
+  │   ├── index.js           # /users/ endpoint
+  │   └── [id]/              # Dynamic parameter
   │       ├── _middleware.js # User-specific middleware
-  │       └── index.js      # /users/:id/ endpoint
+  │       └── index.js       # /users/:id/ endpoint
 ```
 
 ### 2. Key Design Decisions
@@ -142,7 +142,37 @@ export function isMiddlewareFile(entry) {
 The system expects middleware files to be named exactly `_middleware.js`.
 
 3. **Hierarchical Middleware Organization**
-The `dictionaryKeyStartsWithPath` function enforces a hierarchical middleware structure, sorting by path length to ensure proper execution order.
+The `dictionaryKeyStartsWithPath` function enforces a hierarchical middleware structure, sorting by path length to ensure proper execution order. Please note this is an opinion of how middleware should work and is baked into this system. If you want to control this it would have to be done inside the middleware.
+
+4. **Parameter calls**
+
+Global parameters/options can be passed to the controllers and middleware like this
+
+```javascript
+
+const middlewareOptions = { logLevel: debug }
+const controllerOptions = { env: 'test' }
+composeRoutes(express, routeMappings, { middlewareOptions, controllerOptions } )
+```
+
+You should write your Controllers like this.
+
+```javascript
+module.exports = ( router, controllerOptions ) => {
+  ...
+  return router
+}
+```
+
+You should write your Middleware like this.
+
+```javascript
+module.exports = ( middlewareOptions ) => {
+  return [
+    ...
+  ]
+}
+```
 
 ## Potential Issues and Considerations
 
@@ -274,7 +304,7 @@ to all HTTP method calls (get, post, put, etc.) automatically</p>
 </td>
     </tr>
 <tr>
-    <td><a href="#buildMiddlewareDictionary">buildMiddlewareDictionary(basePath, baseURL)</a> ⇒ <code>Object.&lt;string, Array.&lt;function()&gt;&gt;</code></td>
+    <td><a href="#buildMiddlewareDictionary">buildMiddlewareDictionary(basePath, baseURL, [options])</a> ⇒ <code>Object.&lt;string, Array.&lt;function()&gt;&gt;</code></td>
     <td><p>Builds a dictionary of middleware functions from a directory structure
 Recursively scans the given directory for &#39;_middleware.js&#39; files and builds a dictionary
 mapping URL paths to their corresponding middleware functions</p>
@@ -574,7 +604,7 @@ const originalRouter = curriedRouter._getOriginalObject();
 ```
 <a name="buildMiddlewareDictionary"></a>
 
-### buildMiddlewareDictionary(basePath, baseURL) ⇒ <code>Object.&lt;string, Array.&lt;function()&gt;&gt;</code>
+### buildMiddlewareDictionary(basePath, baseURL, [options]) ⇒ <code>Object.&lt;string, Array.&lt;function()&gt;&gt;</code>
 Builds a dictionary of middleware functions from a directory structure
 Recursively scans the given directory for '_middleware.js' files and builds a dictionary
 mapping URL paths to their corresponding middleware functions
@@ -586,6 +616,7 @@ mapping URL paths to their corresponding middleware functions
 | --- | --- | --- |
 | basePath | <code>string</code> | Base filesystem path to start scanning |
 | baseURL | <code>string</code> | Base URL path for the routes |
+| [options] | <code>Object</code> | Options that can be passed to all controllers when they are executed. |
 
 **Example**  
 ```js
@@ -698,6 +729,8 @@ and configures an Express router with all discovered routes and middleware.
 | routeMappings[].baseURL | <code>string</code> | Base URL path for the routes |
 | [options] | <code>Object</code> | Configuration options |
 | [options.routerOptions] | <code>Object</code> | Options for the Express router (default: `{ strict: true }` stay with this for best results but be advised it makes paths require to be terminated with `/` ) |
+| [options.middlewareOptions] | <code>Object</code> | Options passed to every middleware. |
+| [options.controllerOptions] | <code>Object</code> | Options passed to every controller. |
 
 **Example**  
 ```js
@@ -740,7 +773,6 @@ const router = composeRoutes(express, [
 ], {
   routerOptions: {
     strict: true,
-    caseSensitive: true
   }
 });
 ```
