@@ -270,6 +270,7 @@ export function curryObjectMethods(
  *
  * @param {string} basePath - Base filesystem path to start scanning
  * @param {string} baseURL - Base URL path for the routes
+ * @param {Object} [options=undefined] - Options that can be passed to all controllers when they are executed.
  * @returns {Object<string, Array<Function>>} Dictionary where keys are URL paths and values are arrays of middleware functions
  *
  * @example
@@ -308,7 +309,7 @@ export function curryObjectMethods(
  * //   '/api/': [singleMiddleware]
  * // }
  */
-export function buildMiddlewareDictionary(basePath, baseURL) {
+export function buildMiddlewareDictionary(basePath, baseURL, options) {
   const dictionary = {}
   const traverseDirectory = (currentPath, currentURL) => {
     const dirEntries = readdirSync(currentPath, { withFileTypes: true })
@@ -324,7 +325,7 @@ export function buildMiddlewareDictionary(basePath, baseURL) {
         traverseDirectory(entryPath, entryURL)
       } else if (isMiddlewareFile(entry)) {
         try {
-          const middleware = require(entryPath)()
+          const middleware = require(entryPath)(options)
           const middlewareURL = entryURL.replace('_middleware.js', '')
           dictionary[middlewareURL] = autoBox(middleware)
         } catch (e) {
@@ -418,6 +419,8 @@ export function buildRoutes(basePath, baseURL) {
  * @param {string} routeMappings[].baseURL - Base URL path for the routes
  * @param {Object} [options] - Configuration options
  * @param {Object} [options.routerOptions] - Options for the Express router (default: `{ strict: true }` stay with this for best results but be advised it makes paths require to be terminated with `/` )
+ * @param {Object} [options.middlewareOptions=undefined] - Options passed to every middleware.
+ * @param {Object} [options.controllerOptions=undefined] - Options passed to every controller.
  * @returns {Object} Configured Express router with applied routes
  *
  * @example
@@ -458,7 +461,6 @@ export function buildRoutes(basePath, baseURL) {
  * ], {
  *   routerOptions: {
  *     strict: true,
- *     caseSensitive: true
  *   }
  * });
  *
@@ -477,22 +479,25 @@ export function buildRoutes(basePath, baseURL) {
 const composeRoutes = (
   express,
   routeMappings,
-  options = { routerOptions: { strict: true } }
+  options = { routerOptions: { strict: true }, middlewareOptions: undefined, controllerOptions: undefined }
 ) => {
   if (!Array.isArray(routeMappings)) {
     throw new Error('Route mappings must be an array')
   }
   const routerOptions = options.routerOptions || { strict: true }
+  const middlewareOptions = options.middlewareOptions || undefined
+  const controllerOptions = options.controllerOptions || undefined
   const router = express.Router(routerOptions)
   return routeMappings.reduce((router, { basePath, baseURL }) => {
     validatePath(basePath)
     validatePath(baseURL)
     const middlewareFunctionDictionary = buildMiddlewareDictionary(
       basePath,
-      baseURL
+      baseURL,
+      middlewareOptions
     )
     const routes = buildRoutes(basePath, baseURL)
-    routes.map(([url, filepath]) => {
+    routes.forEach(([url, filepath]) => {
       // curry the Router, so that the URL is set to the route, and the Middleware is loaded.
       let curriedRouter = curryObjectMethods(
         router,
@@ -500,7 +505,10 @@ const composeRoutes = (
         ...dictionaryKeyStartsWithPath(middlewareFunctionDictionary, url)
       )
       const controllers = require(filepath)
-      curriedRouter = controllers(curriedRouter)
+      curriedRouter = controllers(curriedRouter, controllerOptions)
+      if ( ! curriedRouter ) {
+        throw new Error(`Controller at ${filepath} did not return the 'router'`)
+      }
       router = curriedRouter._getOriginalObject()
     })
     return router
