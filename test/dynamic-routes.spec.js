@@ -1,5 +1,9 @@
 const request = require('supertest')
 const app = require('./app')
+const composeRoutes = require('../dist/index').default
+const express = require('express')
+const { join } = require('path')
+
 function replaceRouteParams(routeString, paramsObject) {
   const placeholderRegex = /\[([^\]]+)\]/g
   const paramNames = [...new Set(
@@ -58,4 +62,20 @@ describe('Express API Routes', () => {
       expect(response.body).toEqual({ route: convertPlaceholderFormat(route), params })
     }
   )
+})
+
+describe('Controller Error Handling', () => {
+  it('should throw error when controller does not return router', () => {
+    const testApp = express()
+    const routeMappings = [
+      {
+        basePath: join(process.cwd(), 'test', 'routes', 'designed-to-fail', 'no-router-return'),
+        baseURL: '/invalid'
+      }
+    ]
+    
+    expect(() => {
+      testApp.use('/api', composeRoutes(express, routeMappings))
+    }).toThrow('Controller at')
+  })
 })
