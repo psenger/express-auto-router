@@ -14,6 +14,7 @@ These are notes for deploying to NPM. I used `npmrc` to manage my NPM identities
 * `npm run test:lint`
 * `npm run build:readme`
 * `npm run build:github-docs`
+* because the docs are always out of sync, maybe you should push at this step.
 * Use [Cutting Releases](#cutting-releases) to create the tag and release version
 * push the all doc changes, `tag`,`package.json`,`package-lock.json` as well as the `CHANGELOG.md` to the `main` branch
 * `npm publish --access public`
