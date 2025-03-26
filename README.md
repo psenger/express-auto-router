@@ -1,7 +1,7 @@
 # [express-auto-router](https://github.com/psenger/express-auto-router#readme)
 
 > [!TAG]
-> 0.0.1
+> 0.2.0
 
 A dynamic route composition system for Express.js applications that automatically discovers and mount routes and middleware based on your file system structure. Inspired by Next.js routing conventions.
 
@@ -32,7 +32,7 @@ A dynamic route composition system for Express.js applications that automaticall
   * [validatePath(path)](#validatepathpath)
   * [dictionaryKeyStartsWithPath(dictionary, path) ⇒ Array.&lt;function()&gt;](#dictionarykeystartswithpathdictionary-path-%E2%87%92-arrayltfunctiongt)
   * [curryObjectMethods(router, urlPath, ...initialMiddleWareFunctions) ⇒ Object](#curryobjectmethodsrouter-urlpath-initialmiddlewarefunctions-%E2%87%92-object)
-  * [buildMiddlewareDictionary(basePath, baseURL) ⇒ Object.&lt;string, Array.&lt;function()&gt;&gt;](#buildmiddlewaredictionarybasepath-baseurl-%E2%87%92-objectltstring-arrayltfunctiongtgt)
+  * [buildMiddlewareDictionary(basePath, baseURL, [options]) ⇒ Object.&lt;string, Array.&lt;function()&gt;&gt;](#buildmiddlewaredictionarybasepath-baseurl-options-%E2%87%92-objectltstring-arrayltfunctiongtgt)
   * [buildRoutes(basePath, baseURL) ⇒ Array.&lt;Array.&lt;string&gt;&gt;](#buildroutesbasepath-baseurl-%E2%87%92-arrayltarrayltstringgtgt)
   * [composeRoutes(express, routeMappings, [options]) ⇒ Object](#composeroutesexpress-routemappings-options-%E2%87%92-object)
 - [Usage](#usage)
@@ -96,10 +96,10 @@ routes/
   ├── _middleware.js         # Global middleware
   ├── users/
   │   ├── _middleware.js     # Users-specific middleware
-  │   ├── index.js          # /users/ endpoint
-  │   └── [id]/            # Dynamic parameter
+  │   ├── index.js           # /users/ endpoint
+  │   └── [id]/              # Dynamic parameter
   │       ├── _middleware.js # User-specific middleware
-  │       └── index.js      # /users/:id/ endpoint
+  │       └── index.js       # /users/:id/ endpoint
 ```
 
 ### 2. Key Design Decisions
@@ -142,7 +142,37 @@ export function isMiddlewareFile(entry) {
 The system expects middleware files to be named exactly `_middleware.js`.
 
 3. **Hierarchical Middleware Organization**
-The `dictionaryKeyStartsWithPath` function enforces a hierarchical middleware structure, sorting by path length to ensure proper execution order.
+The `dictionaryKeyStartsWithPath` function enforces a hierarchical middleware structure, sorting by path length to ensure proper execution order. Please note this is an opinion of how middleware should work and is baked into this system. If you want to control this it would have to be done inside the middleware.
+
+4. **Parameter calls**
+
+Global parameters/options can be passed to the controllers and middleware like this
+
+```javascript
+
+const middlewareOptions = { logLevel: debug }
+const controllerOptions = { env: 'test' }
+composeRoutes(express, routeMappings, { middlewareOptions, controllerOptions } )
+```
+
+You should write your Controllers like this.
+
+```javascript
+module.exports = ( router, controllerOptions ) => {
+  ...
+  return router
+}
+```
+
+You should write your Middleware like this.
+
+```javascript
+module.exports = ( middlewareOptions ) => {
+  return [
+    ...
+  ]
+}
+```
 
 ## Potential Issues and Considerations
 
@@ -274,7 +304,7 @@ to all HTTP method calls (get, post, put, etc.) automatically</p>
 </td>
     </tr>
 <tr>
-    <td><a href="#buildMiddlewareDictionary">buildMiddlewareDictionary(basePath, baseURL)</a> ⇒ <code>Object.&lt;string, Array.&lt;function()&gt;&gt;</code></td>
+    <td><a href="#buildMiddlewareDictionary">buildMiddlewareDictionary(basePath, baseURL, [options])</a> ⇒ <code>Object.&lt;string, Array.&lt;function()&gt;&gt;</code></td>
     <td><p>Builds a dictionary of middleware functions from a directory structure
 Recursively scans the given directory for &#39;_middleware.js&#39; files and builds a dictionary
 mapping URL paths to their corresponding middleware functions</p>
@@ -302,26 +332,26 @@ and configures an Express router with all discovered routes and middleware.</p>
 ### isMiddlewareFile(entry) ⇒ <code>boolean</code>
 Checks if a directory entry is a middleware file
 
-**Kind**: global function  
-**Returns**: <code>boolean</code> - - True if the entry is a file named '_middleware.js'  
+**Kind**: global function
+**Returns**: <code>boolean</code> - - True if the entry is a file named '_middleware.js'
 
 | Param | Type | Description |
 | --- | --- | --- |
 | entry | <code>Object</code> | The directory entry to check (fs.Dirent object) |
 
-**Example**  
+**Example**
 ```js
 // With a file entry for '_middleware.js'
 const middlewareEntry = { isFile: () => true, name: '_middleware.js' };
 isMiddlewareFile(middlewareEntry); // Returns: true
 ```
-**Example**  
+**Example**
 ```js
 // With a directory entry
 const dirEntry = { isFile: () => false, name: '_middleware.js' };
 isMiddlewareFile(dirEntry); // Returns: false
 ```
-**Example**  
+**Example**
 ```js
 // With a different file
 const otherFileEntry = { isFile: () => true, name: 'index.js' };
@@ -332,30 +362,30 @@ isMiddlewareFile(otherFileEntry); // Returns: false
 ### autoBox(ary) ⇒ <code>Array</code>
 Ensures a value is always an array by wrapping non-array values
 
-**Kind**: global function  
-**Returns**: <code>Array</code> - - Wraps the value in an array, or if the input was an array already it will return it as is.  
+**Kind**: global function
+**Returns**: <code>Array</code> - - Wraps the value in an array, or if the input was an array already it will return it as is.
 
 | Param | Type | Description |
 | --- | --- | --- |
 | ary | <code>\*</code> | The value to convert to an array |
 
-**Example**  
+**Example**
 ```js
 // With a non-array value
 autoBox(5); // Returns: [5]
 ```
-**Example**  
+**Example**
 ```js
 // With an array value
 autoBox([1, 2, 3]); // Returns: [1, 2, 3]
 ```
-**Example**  
+**Example**
 ```js
 // With null or undefined
 autoBox(null); // Returns: [null]
 autoBox(undefined); // Returns: [undefined]
 ```
-**Example**  
+**Example**
 ```js
 // With an object
 autoBox({ key: 'value' }); // Returns: [{ key: 'value' }]
@@ -365,29 +395,29 @@ autoBox({ key: 'value' }); // Returns: [{ key: 'value' }]
 ### replaceUrlPlaceholders(urlPath) ⇒ <code>string</code>
 Converts URL placeholder syntax [param] to Express parameter syntax :param
 
-**Kind**: global function  
-**Returns**: <code>string</code> - - The URL path with Express-style parameters  
+**Kind**: global function
+**Returns**: <code>string</code> - - The URL path with Express-style parameters
 
 | Param | Type | Description |
 | --- | --- | --- |
 | urlPath | <code>string</code> | The URL path containing placeholders |
 
-**Example**  
+**Example**
 ```js
 // With single placeholder
 replaceUrlPlaceholders('/users/[id]'); // Returns: '/users/:id'
 ```
-**Example**  
+**Example**
 ```js
 // With multiple placeholders
 replaceUrlPlaceholders('/users/[id]/posts/[postId]'); // Returns: '/users/:id/posts/:postId'
 ```
-**Example**  
+**Example**
 ```js
 // With no placeholders
 replaceUrlPlaceholders('/users/list'); // Returns: '/users/list'
 ```
-**Example**  
+**Example**
 ```js
 // With nested/complex placeholders
 replaceUrlPlaceholders('/products/[category]/[id]/reviews/[reviewId]');
@@ -398,29 +428,29 @@ replaceUrlPlaceholders('/products/[category]/[id]/reviews/[reviewId]');
 ### isPlaceholder(urlPath) ⇒ <code>boolean</code>
 Checks if a URL path contains a placeholder
 
-**Kind**: global function  
-**Returns**: <code>boolean</code> - - True if the path contains a placeholder  
+**Kind**: global function
+**Returns**: <code>boolean</code> - - True if the path contains a placeholder
 
 | Param | Type | Description |
 | --- | --- | --- |
 | urlPath | <code>string</code> | The URL path to check |
 
-**Example**  
+**Example**
 ```js
 // With placeholder
 isPlaceholder('/users/[id]'); // Returns: true
 ```
-**Example**  
+**Example**
 ```js
 // With multiple placeholders
 isPlaceholder('/users/[id]/posts/[postId]'); // Returns: true
 ```
-**Example**  
+**Example**
 ```js
 // Without placeholder
 isPlaceholder('/users/list'); // Returns: false
 ```
-**Example**  
+**Example**
 ```js
 // With square brackets in a different context (not a placeholder)
 isPlaceholder('/users/list[all]'); // Returns: true (matches the regex pattern)
@@ -430,7 +460,7 @@ isPlaceholder('/users/list[all]'); // Returns: true (matches the regex pattern)
 ### validatePath(path)
 Validates if a path is a non-empty string
 
-**Kind**: global function  
+**Kind**: global function
 **Throws**:
 
 - <code>Error</code> If path is not a string or is empty
@@ -440,12 +470,12 @@ Validates if a path is a non-empty string
 | --- | --- | --- |
 | path | <code>string</code> | The path to validate |
 
-**Example**  
+**Example**
 ```js
 // With valid path
 validatePath('/api/users'); // No error thrown
 ```
-**Example**  
+**Example**
 ```js
 // With empty string
 try {
@@ -454,7 +484,7 @@ try {
   console.error(error.message); // Outputs: 'Invalid path provided'
 }
 ```
-**Example**  
+**Example**
 ```js
 // With null value
 try {
@@ -463,7 +493,7 @@ try {
   console.error(error.message); // Outputs: 'Invalid path provided'
 }
 ```
-**Example**  
+**Example**
 ```js
 // With non-string value
 try {
@@ -479,15 +509,15 @@ Retrieves and sorts middleware functions that match a given path
 Finds all entries in the dictionary where the given path starts with the dictionary key,
 sorts them by key length (shortest first), and returns the flattened array of middleware functions
 
-**Kind**: global function  
-**Returns**: <code>Array.&lt;function()&gt;</code> - - Array of middleware functions that apply to the path, ordered by path specificity  
+**Kind**: global function
+**Returns**: <code>Array.&lt;function()&gt;</code> - - Array of middleware functions that apply to the path, ordered by path specificity
 
 | Param | Type | Description |
 | --- | --- | --- |
 | dictionary | <code>Object.&lt;string, (function()\|Array.&lt;function()&gt;)&gt;</code> | Dictionary of paths to middleware functions |
 | path | <code>string</code> | The path to match |
 
-**Example**  
+**Example**
 ```js
 // With matching paths
 const dict = {
@@ -497,7 +527,7 @@ const dict = {
 dictionaryKeyStartsWithPath(dict, '/api/users/profile');
 // Returns: [authMiddleware, userMiddleware] (in order from least to most specific)
 ```
-**Example**  
+**Example**
 ```js
 // With no matching paths
 const dict = {
@@ -507,7 +537,7 @@ const dict = {
 dictionaryKeyStartsWithPath(dict, '/admin/');
 // Returns: []
 ```
-**Example**  
+**Example**
 ```js
 // With mixed array and single function values
 const dict = {
@@ -517,7 +547,7 @@ const dict = {
 dictionaryKeyStartsWithPath(dict, '/api/users/');
 // Returns: [authMiddleware, logMiddleware, userMiddleware]
 ```
-**Example**  
+**Example**
 ```js
 // With null or undefined values in the dictionary (they are filtered out)
 const dict = {
@@ -534,8 +564,8 @@ Creates a curried router object with pre-configured URL path and middleware
 Returns a proxy to the original router that applies the given URL path and middleware functions
 to all HTTP method calls (get, post, put, etc.) automatically
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - - Curried router proxy with pre-configured path and middleware  
+**Kind**: global function
+**Returns**: <code>Object</code> - - Curried router proxy with pre-configured path and middleware
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -543,7 +573,7 @@ to all HTTP method calls (get, post, put, etc.) automatically
 | urlPath | <code>string</code> | The URL path to be curried |
 | ...initialMiddleWareFunctions | <code>function</code> | Initial middleware functions to be applied (rest parameter, accepts multiple functions) |
 
-**Example**  
+**Example**
 ```js
 // Basic usage with a single middleware function
 const router = express.Router();
@@ -551,21 +581,21 @@ const curriedRouter = curryObjectMethods(router, '/users', authMiddleware);
 curriedRouter.get((req, res) => res.json({}));
 // Equivalent to: router.get('/users', authMiddleware, (req, res) => res.json({}));
 ```
-**Example**  
+**Example**
 ```js
 // With multiple middleware functions
 const curriedRouter = curryObjectMethods(router, '/posts', authMiddleware, logMiddleware);
 curriedRouter.post((req, res) => res.status(201).json({}));
 // Equivalent to: router.post('/posts', authMiddleware, logMiddleware, (req, res) => res.status(201).json({}));
 ```
-**Example**  
+**Example**
 ```js
 // With no middleware
 const curriedRouter = curryObjectMethods(router, '/public');
 curriedRouter.get((req, res) => res.send('Hello'));
 // Equivalent to: router.get('/public', (req, res) => res.send('Hello'));
 ```
-**Example**  
+**Example**
 ```js
 // Accessing the original router object
 const curriedRouter = curryObjectMethods(router, '/api');
@@ -574,20 +604,21 @@ const originalRouter = curriedRouter._getOriginalObject();
 ```
 <a name="buildMiddlewareDictionary"></a>
 
-### buildMiddlewareDictionary(basePath, baseURL) ⇒ <code>Object.&lt;string, Array.&lt;function()&gt;&gt;</code>
+### buildMiddlewareDictionary(basePath, baseURL, [options]) ⇒ <code>Object.&lt;string, Array.&lt;function()&gt;&gt;</code>
 Builds a dictionary of middleware functions from a directory structure
 Recursively scans the given directory for '_middleware.js' files and builds a dictionary
 mapping URL paths to their corresponding middleware functions
 
-**Kind**: global function  
-**Returns**: <code>Object.&lt;string, Array.&lt;function()&gt;&gt;</code> - Dictionary where keys are URL paths and values are arrays of middleware functions  
+**Kind**: global function
+**Returns**: <code>Object.&lt;string, Array.&lt;function()&gt;&gt;</code> - Dictionary where keys are URL paths and values are arrays of middleware functions
 
 | Param | Type | Description |
 | --- | --- | --- |
 | basePath | <code>string</code> | Base filesystem path to start scanning |
 | baseURL | <code>string</code> | Base URL path for the routes |
+| [options] | <code>Object</code> | Options that can be passed to all controllers when they are executed. |
 
-**Example**  
+**Example**
 ```js
 // Basic directory structure with middleware
 // ./src/routes/_middleware.js         -> exports a global middleware
@@ -598,7 +629,7 @@ const middlewares = buildMiddlewareDictionary('./src/routes', '/api');
 //   '/api/users/': [usersMiddleware]
 // }
 ```
-**Example**  
+**Example**
 ```js
 // With dynamic route parameters
 // ./src/routes/users/[id]/_middleware.js  -> exports a user-specific middleware
@@ -609,7 +640,7 @@ const middlewares = buildMiddlewareDictionary('./src/routes', '/api');
 //   '/api/users/:id/': [userSpecificMiddleware]
 // }
 ```
-**Example**  
+**Example**
 ```js
 // With middleware exporting multiple functions
 // ./src/routes/_middleware.js  -> exports [authMiddleware, logMiddleware]
@@ -618,7 +649,7 @@ const middlewares = buildMiddlewareDictionary('./src/routes', '/api');
 //   '/api/': [authMiddleware, logMiddleware]
 // }
 ```
-**Example**  
+**Example**
 ```js
 // With middleware exporting a single function
 // ./src/routes/_middleware.js  -> exports singleMiddleware (not in an array)
@@ -634,15 +665,15 @@ Builds an array of route mappings from a directory structure
 Recursively scans the given directory for 'index.js' files and builds an array of
 URL paths and their corresponding file paths, converting directory placeholders to Express params
 
-**Kind**: global function  
-**Returns**: <code>Array.&lt;Array.&lt;string&gt;&gt;</code> - Array of tuples where first element is URL path and second is file path  
+**Kind**: global function
+**Returns**: <code>Array.&lt;Array.&lt;string&gt;&gt;</code> - Array of tuples where first element is URL path and second is file path
 
 | Param | Type | Description |
 | --- | --- | --- |
 | basePath | <code>string</code> | Base filesystem path to start scanning |
 | baseURL | <code>string</code> | Base URL path for the routes |
 
-**Example**  
+**Example**
 ```js
 // Basic directory structure
 // ./src/routes/users/index.js
@@ -653,7 +684,7 @@ const routes = buildRoutes('./src/routes', '/api');
 //   ['/api/posts/', './src/routes/posts/index.js']
 // ]
 ```
-**Example**  
+**Example**
 ```js
 // With dynamic route parameters
 // ./src/routes/users/[id]/index.js
@@ -662,7 +693,7 @@ const routes = buildRoutes('./src/routes', '/api');
 //   ['/api/users/:id/', './src/routes/users/[id]/index.js']
 // ]
 ```
-**Example**  
+**Example**
 ```js
 // With nested dynamic routes
 // ./src/routes/users/[userId]/posts/[postId]/index.js
@@ -671,7 +702,7 @@ const routes = buildRoutes('./src/routes', '/api');
 //   ['/api/users/:userId/posts/:postId/', './src/routes/users/[userId]/posts/[postId]/index.js']
 // ]
 ```
-**Example**  
+**Example**
 ```js
 // With root route
 // ./src/routes/index.js
@@ -687,8 +718,8 @@ Composes Express routes from a directory structure with middleware support.
 This is the main function that processes route mappings, builds middleware dictionaries,
 and configures an Express router with all discovered routes and middleware.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - Configured Express router with applied routes  
+**Kind**: global function
+**Returns**: <code>Object</code> - Configured Express router with applied routes
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -698,8 +729,10 @@ and configures an Express router with all discovered routes and middleware.
 | routeMappings[].baseURL | <code>string</code> | Base URL path for the routes |
 | [options] | <code>Object</code> | Configuration options |
 | [options.routerOptions] | <code>Object</code> | Options for the Express router (default: `{ strict: true }` stay with this for best results but be advised it makes paths require to be terminated with `/` ) |
+| [options.middlewareOptions] | <code>Object</code> | Options passed to every middleware. |
+| [options.controllerOptions] | <code>Object</code> | Options passed to every controller. |
 
-**Example**  
+**Example**
 ```js
 // Basic usage with a single route mapping
 const express = require('express');
@@ -715,7 +748,7 @@ const router = composeRoutes(express, [
 app.use(router);
 // This will set up all routes found in './src/routes' with their middleware
 ```
-**Example**  
+**Example**
 ```js
 // With multiple route mappings
 const router = composeRoutes(express, [
@@ -729,7 +762,7 @@ const router = composeRoutes(express, [
   }
 ]);
 ```
-**Example**  
+**Example**
 ```js
 // With custom router options
 const router = composeRoutes(express, [
@@ -740,11 +773,10 @@ const router = composeRoutes(express, [
 ], {
   routerOptions: {
     strict: true,
-    caseSensitive: true
   }
 });
 ```
-**Example**  
+**Example**
 ```js
 // With an existing router instance
 const existingRouter = express.Router();

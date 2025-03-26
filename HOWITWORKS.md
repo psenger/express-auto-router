@@ -54,7 +54,37 @@ export function isMiddlewareFile(entry) {
 The system expects middleware files to be named exactly `_middleware.js`.
 
 3. **Hierarchical Middleware Organization**
-The `dictionaryKeyStartsWithPath` function enforces a hierarchical middleware structure, sorting by path length to ensure proper execution order.
+The `dictionaryKeyStartsWithPath` function enforces a hierarchical middleware structure, sorting by path length to ensure proper execution order. Please note this is an opinion of how middleware should work and is baked into this system. If you want to control this it would have to be done inside the middleware.
+
+4. **Parameter calls**
+
+Global parameters/options can be passed to the controllers and middleware like this
+
+```javascript
+
+const middlewareOptions = { logLevel: debug }
+const controllerOptions = { env: 'test' }
+composeRoutes(express, routeMappings, { middlewareOptions, controllerOptions } )
+```
+
+You should write your Controllers like this.
+
+```javascript
+module.exports = ( router, controllerOptions ) => {
+  ...
+  return router
+}
+```
+
+You should write your Middleware like this.
+
+```javascript
+module.exports = ( middlewareOptions ) => {
+  return [
+    ...
+  ]
+}
+```
 
 ## Potential Issues and Considerations
 
