@@ -497,7 +497,7 @@ const composeRoutes = (
       middlewareOptions
     )
     const routes = buildRoutes(basePath, baseURL)
-    routes.map(([url, filepath]) => {
+    routes.forEach(([url, filepath]) => {
       // curry the Router, so that the URL is set to the route, and the Middleware is loaded.
       let curriedRouter = curryObjectMethods(
         router,
@@ -506,6 +506,9 @@ const composeRoutes = (
       )
       const controllers = require(filepath)
       curriedRouter = controllers(curriedRouter, controllerOptions)
+      if ( ! curriedRouter ) {
+        throw new Error(`Controller at ${filepath} did not return the 'router'`)
+      }
       router = curriedRouter._getOriginalObject()
     })
     return router
