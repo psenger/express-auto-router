@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/psenger/express-auto-router/compare/v0.2.1...v1.0.0) (2025-08-04)
+
+
+### Bug Fixes
+
+* add explicit error for missing router return in controllers ([fc4f02b](https://github.com/psenger/express-auto-router/commit/fc4f02b6a3f70e1bb1eefcbab80d3fece52726ac)), closes [#1](https://github.com/psenger/express-auto-router/issues/1)
+
 ### [0.2.1](https://github.com/psenger/express-auto-router/compare/v0.2.0...v0.2.1) (2025-03-26)
 
 ## [0.2.0](https://github.com/psenger/express-auto-router/compare/v0.1.0...v0.2.0) (2025-03-26)
