@@ -10,6 +10,8 @@ This project directly uses the following open-source packages:
 ### Development Dependencies
 
 - [@psenger/markdown-fences](https://github.com/psenger/markdown-fences) - MIT License
+- [@rollup/plugin-commonjs](https://github.com/rollup/plugins) - MIT License
+- [@rollup/plugin-node-resolve](https://github.com/rollup/plugins) - MIT License
 - [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) - MIT License
 - [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) - MIT License
 - [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) - MIT License
