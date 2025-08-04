@@ -814,7 +814,7 @@ function buildRoutes(basePath, baseURL) {
  * const express = require('express');
  * const app = express();
  *
- * const router = composeRoutes(express, [
+ * const router = await composeRoutes(express, [
  *   {
  *     basePath: './src/routes',
  *     baseURL: '/api'
@@ -826,7 +826,7 @@ function buildRoutes(basePath, baseURL) {
  *
  * @example
  * // With multiple route mappings
- * const router = composeRoutes(express, [
+ * const router = await composeRoutes(express, [
  *   {
  *     basePath: './src/api/routes',
  *     baseURL: '/api'
@@ -839,7 +839,7 @@ function buildRoutes(basePath, baseURL) {
  *
  * @example
  * // With custom router options
- * const router = composeRoutes(express, [
+ * const router = await composeRoutes(express, [
  *   {
  *     basePath: './src/routes',
  *     baseURL: '/api'
@@ -853,7 +853,7 @@ function buildRoutes(basePath, baseURL) {
  * @example
  * // With an existing router instance
  * const existingRouter = express.Router();
- * const router = composeRoutes(express, [
+ * const router = await composeRoutes(express, [
  *   {
  *     basePath: './src/routes',
  *     baseURL: '/api'

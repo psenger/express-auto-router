@@ -64,7 +64,7 @@ Global parameters/options can be passed to the controllers and middleware like t
 
 const middlewareOptions = { logLevel: debug }
 const controllerOptions = { env: 'test' }
-composeRoutes(express, routeMappings, { middlewareOptions, controllerOptions } )
+await composeRoutes(express, routeMappings, { middlewareOptions, controllerOptions } )
 ```
 
 You should write your Controllers like this.

@@ -189,7 +189,7 @@ Global parameters/options can be passed to the controllers and middleware like t
 
 const middlewareOptions = { logLevel: debug }
 const controllerOptions = { env: 'test' }
-composeRoutes(express, routeMappings, { middlewareOptions, controllerOptions } )
+await composeRoutes(express, routeMappings, { middlewareOptions, controllerOptions } )
 ```
 
 You should write your Controllers like this.
@@ -1300,7 +1300,7 @@ and configures an Express router with all discovered routes and middleware.
 const express = require('express');
 const app = express();
 
-const router = composeRoutes(express, [
+const router = await composeRoutes(express, [
   {
     basePath: './src/routes',
     baseURL: '/api'
@@ -1313,7 +1313,7 @@ app.use(router);
 **Example**  
 ```js
 // With multiple route mappings
-const router = composeRoutes(express, [
+const router = await composeRoutes(express, [
   {
     basePath: './src/api/routes',
     baseURL: '/api'
@@ -1327,7 +1327,7 @@ const router = composeRoutes(express, [
 **Example**  
 ```js
 // With custom router options
-const router = composeRoutes(express, [
+const router = await composeRoutes(express, [
   {
     basePath: './src/routes',
     baseURL: '/api'
@@ -1342,7 +1342,7 @@ const router = composeRoutes(express, [
 ```js
 // With an existing router instance
 const existingRouter = express.Router();
-const router = composeRoutes(express, [
+const router = await composeRoutes(express, [
   {
     basePath: './src/routes',
     baseURL: '/api'
@@ -1546,7 +1546,7 @@ const routeMappings = [
     baseURL: '/closed'
   }
 ]
-app.use('/api', composeRoutes(express, routeMappings))
+app.use('/api', await composeRoutes(express, routeMappings))
 module.exports = app
 ```
 
@@ -1572,7 +1572,7 @@ const routeMappings = [
     baseURL: '/closed'
   }
 ]
-app.use('/api', composeRoutes(express, routeMappings))
+app.use('/api', await composeRoutes(express, routeMappings))
 export default app
 ```
 

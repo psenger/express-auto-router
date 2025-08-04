@@ -187,7 +187,7 @@ const routeMappings = [
     baseURL: '/closed'
   }
 ]
-app.use('/api', composeRoutes(express, routeMappings))
+app.use('/api', await composeRoutes(express, routeMappings))
 module.exports = app
 ```
 
@@ -213,6 +213,6 @@ const routeMappings = [
     baseURL: '/closed'
   }
 ]
-app.use('/api', composeRoutes(express, routeMappings))
+app.use('/api', await composeRoutes(express, routeMappings))
 export default app
 ```
