@@ -45,7 +45,7 @@
 ### Phase 0: Feature Development
 1. **Create ticket/issue** in your project management system (GitHub Issues, Jira, etc.) follow the instructions in [CONTRIBUTING](./CONTRIBUTING.md)
 
-2. **Create feature branch from development**
+2. **Create feature branch from dev**
    ```bash
    git checkout dev
    git pull origin dev
@@ -80,13 +80,13 @@
 
 ## Deployment Process
 
-### Phase 1: Prepare Release on Development
+### Phase 1: Prepare Release on Dev Branch
 1. **Merge all approved PRs to `dev`**
   - Review and approve PRs
   - Merge PRs (squash or merge commits based on your strategy)
   - Delete feature branches after merge
 
-2. **Pull latest development and run full test suite**
+2. **Pull latest dev and run full test suite**
    ```bash
    git checkout dev
    git pull origin dev
@@ -112,6 +112,7 @@
 
 3. **Preview and validate the release (DRY RUN)**
    ```bash
+   # Still on dev branch
    # Preview what will happen without making changes
    npm run release -- --release-as major --dry-run
    # or for minor/patch:
@@ -130,9 +131,11 @@
    - Wrong section? Verify commit type: `feat:`, `fix:`, etc.
    - Breaking changes not showing? Ensure `BREAKING CHANGE:` or `!` is used
    - Unexpected version? You might have unreleased tags: `git tag -l`
+   - Version in README doesn't match package.json? Rebuild after bump
 
 4. **Execute the actual version bump**
    ```bash
+   # Still on dev branch - this is where version bumping happens
    # After validating with dry run, run without --dry-run
    npm run release -- --release-as major
 
@@ -201,7 +204,7 @@
   - Attach any build artifacts if needed
 
 ### Phase 4: Sync Branches
-1. **Back-merge main to development**
+1. **Back-merge main to dev**
    ```bash
    git checkout dev
    git pull origin dev
@@ -258,7 +261,7 @@ The `publish` branch is configured as the source for GitHub Pages:
 If something goes wrong after publishing:
 1. `npm unpublish <package>@<version>` (within 72 hours)
 2. Revert the merge commit on main
-3. Fix the issue on development
+3. Fix the issue on dev
 4. Start the release process again with a new patch version
 
 ### First Release
