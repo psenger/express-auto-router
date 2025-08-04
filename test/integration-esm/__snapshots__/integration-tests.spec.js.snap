@@ -1,0 +1,1606 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/posts/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+    },
+  },
+  "route": "/api/posts/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/posts/10/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+    },
+    "postId": "10",
+  },
+  "route": "/api/posts/:postId/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/users/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/users/10/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+    "id": "10",
+  },
+  "route": "/api/users/:id/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/users/admin/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/admin/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/users/all/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/all/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/posts/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+    },
+  },
+  "route": "/api/posts/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/posts/10/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+    },
+    "postId": "10",
+  },
+  "route": "/api/posts/:postId/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/users/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/users/10/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+    "id": "10",
+  },
+  "route": "/api/users/:id/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/users/admin/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/admin/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/users/all/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/all/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/posts/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+    },
+  },
+  "route": "/api/posts/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/posts/10/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+    },
+    "postId": "10",
+  },
+  "route": "/api/posts/:postId/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/users/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/users/10/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+    "id": "10",
+  },
+  "route": "/api/users/:id/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/users/admin/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/admin/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/users/all/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/all/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/posts/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+    },
+  },
+  "route": "/api/posts/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/posts/10/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+    },
+    "postId": "10",
+  },
+  "route": "/api/posts/:postId/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/users/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/users/10/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+    "id": "10",
+  },
+  "route": "/api/users/:id/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/users/admin/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/admin/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/users/all/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/all/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/posts/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+    },
+  },
+  "route": "/api/posts/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/posts/10/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+    },
+    "postId": "10",
+  },
+  "route": "/api/posts/:postId/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/users/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/users/10/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+    "id": "10",
+  },
+  "route": "/api/users/:id/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/users/admin/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/admin/",
+}
+`;
+
+exports[`Integration Tests Backward Compatibility Integration Tests Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/users/all/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /api/_middleware.js globalMiddleware with priority: 50",
+    "executed /api/users/_middleware.js userMiddleware with priority: 50",
+  ],
+  "params": {
+    "context": {
+      "global": true,
+      "user": true,
+    },
+  },
+  "route": "/api/users/all/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /alpha/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 10,
+  "route": "/alpha/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/users/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+  },
+  "priority": 50,
+  "route": "/api/users/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/users/10/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "10",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/users/10/ 2`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "10",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/users/admin/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "admin",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/users/all/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "all",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /api/users/profile/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "profile",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /beta/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 50,
+  "route": "/beta/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /charlie/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 50,
+  "route": "/charlie/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for delete /zulu/ 1`] = `
+{
+  "method": "delete",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 5,
+  "route": "/zulu/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /alpha/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 10,
+  "route": "/alpha/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/users/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+  },
+  "priority": 50,
+  "route": "/api/users/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/users/10/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "10",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/users/10/ 2`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "10",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/users/admin/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "admin",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/users/all/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "all",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /api/users/profile/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "profile",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /beta/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 50,
+  "route": "/beta/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /charlie/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 50,
+  "route": "/charlie/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for get /zulu/ 1`] = `
+{
+  "method": "get",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 5,
+  "route": "/zulu/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /alpha/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 10,
+  "route": "/alpha/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/users/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+  },
+  "priority": 50,
+  "route": "/api/users/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/users/10/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "10",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/users/10/ 2`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "10",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/users/admin/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "admin",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/users/all/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "all",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /api/users/profile/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "profile",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /beta/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 50,
+  "route": "/beta/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /charlie/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 50,
+  "route": "/charlie/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for patch /zulu/ 1`] = `
+{
+  "method": "patch",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 5,
+  "route": "/zulu/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /alpha/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 10,
+  "route": "/alpha/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/users/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+  },
+  "priority": 50,
+  "route": "/api/users/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/users/10/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "10",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/users/10/ 2`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "10",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/users/admin/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "admin",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/users/all/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "all",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /api/users/profile/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "profile",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /beta/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 50,
+  "route": "/beta/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /charlie/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 50,
+  "route": "/charlie/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for post /zulu/ 1`] = `
+{
+  "method": "post",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 5,
+  "route": "/zulu/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /alpha/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 10,
+  "route": "/alpha/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/users/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+  },
+  "priority": 50,
+  "route": "/api/users/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/users/10/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "10",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/users/10/ 2`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "10",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/users/admin/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "admin",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/users/all/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "all",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /api/users/profile/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /api/users/_middleware.js userMiddlewareAAA with priority: 50",
+    "executed /api/users/_middleware.js userMiddlewareBBB with priority: 50",
+    "executed /api/_middleware.js apiMiddlewareAA with priority: 95",
+    "executed /api/_middleware.js apiMiddlewareBB with priority: 96",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "api": true,
+      "root": true,
+      "user": true,
+    },
+    "userId": "profile",
+  },
+  "priority": 5,
+  "route": "/api/users/:userId/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /beta/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 50,
+  "route": "/beta/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /charlie/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 50,
+  "route": "/charlie/",
+}
+`;
+
+exports[`Integration Tests Forward Compatibility Integration Tests (Priority Directory Names) Comprehensive Route and HTTP Method Testing for Middleware Priority should return status 200 for put /zulu/ 1`] = `
+{
+  "method": "put",
+  "middleware": [
+    "executed /_middleware.js rootMiddlewareC with priority: 1",
+    "executed /_middleware.js rootMiddlewareB with priority: 98",
+    "executed /_middleware.js rootMiddlewareA with priority: 99",
+  ],
+  "params": {
+    "context": {
+      "root": true,
+    },
+  },
+  "priority": 5,
+  "route": "/zulu/",
+}
+`;

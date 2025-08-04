@@ -1,9 +1,10 @@
 {
   "name": "@psenger/express-auto-router",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "A dynamic route composition system for Express.js applications that automatically discovers and mount routes and middleware based on your file system structure. Inspired by Next.js routing conventions.",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
+  "type": "commonjs",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "build:watch": "rollup -c rollup.config.mjs -w",
@@ -11,7 +12,8 @@
     "build:github-docs": "node scripts/build-github-doc-readme.js && jsdoc src/*.js -d ./docs/ -R ./docs/README.md",
     "pretest": "npm run build",
     "test": "jest",
-    "test:coverage": "npm test -- --coverage",
+    "test:unit": "jest --selectProjects unit",
+    "test:coverage": "jest --selectProjects unit --coverage",
     "test:lint": "eslint ./src",
     "test:lint:fix": "eslint ./src --fix",
     "clean": "npm run clean:dist && npm run clean:coverage && npm run clean:docs",
@@ -36,7 +38,9 @@
     "filebasedrouting",
     "discovery",
     "nodejs",
-    "restframework"
+    "restframework",
+    "convention",
+    "convention-over-configuration"
   ],
   "author": {
     "name": "Philip A Senger",
@@ -54,6 +58,8 @@
   "homepage": "https://github.com/psenger/express-auto-router#readme",
   "devDependencies": {
     "@psenger/markdown-fences": "^1.2.0",
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
     "eslint": "^9.22.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-jest": "^28.11.0",
