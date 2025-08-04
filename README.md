@@ -1,7 +1,7 @@
 # [express-auto-router](https://github.com/psenger/express-auto-router#readme)
 
 > [!TAG]
-> 0.2.1
+> 1.0.0
 
 A dynamic route composition system for Express.js applications that automatically discovers and mount routes and middleware based on your file system structure. Inspired by Next.js routing conventions.
 
