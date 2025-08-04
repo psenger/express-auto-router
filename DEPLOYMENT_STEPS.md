@@ -153,8 +153,11 @@
    npm run build:readme
    npm run build:github-docs
    ```
+   - If anything changes you need to get the changes into the main branch.
+   - create a Pull request from main to publish, approve it and merge, the rest just happens.
 
 5. **Commit version bump and updated docs**
+   - only if you have to ...
    ```bash
    git add .
    git commit -m "chore: release v$(node -p "require('./package.json').version")"
