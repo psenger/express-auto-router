@@ -167,11 +167,15 @@ module.exports = () => {
 
 4. At this point, you are ready to use it...
 
-```javascript
+## CommonJS (CJS) Usage
 
+Due to how Rollup exports the module, you need to access the `default` property when using CommonJS:
+
+```javascript
 const express = require('express')
 const { join } = require('path')
-const composeRoutes = require('@psenger/express-auto-router').default
+// Note: Access .default due to Rollup export structure
+const { composeRoutes } = require('@psenger/express-auto-router').default
 const app = express()
 const routeMappings = [
   {
@@ -185,5 +189,30 @@ const routeMappings = [
 ]
 app.use('/api', composeRoutes(express, routeMappings))
 module.exports = app
+```
 
+## ES Modules (ESM) Usage
+
+For ES modules, you also need to access the `default` property:
+
+```javascript
+import express from 'express'
+import { join } from 'path'
+// Note: Access .default due to Rollup export structure
+import module from '@psenger/express-auto-router'
+const composeRoutes = module.default
+
+const app = express()
+const routeMappings = [
+  {
+    basePath: join(process.cwd(), 'src', 'routes', 'open'),
+    baseURL: '/open'
+  },
+  {
+    basePath: join(process.cwd(), 'src', 'routes', 'closed'),
+    baseURL: '/closed'
+  }
+]
+app.use('/api', composeRoutes(express, routeMappings))
+export default app
 ```
